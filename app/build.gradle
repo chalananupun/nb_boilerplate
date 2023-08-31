@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.fidenz.boilerplate'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.fidenz.boilerplate"
+        minSdk 28
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation project(path: ':android_boilerplate')
+//    implementation project(path: ':android_boilerplate')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
+    //custom toast
+    implementation 'com.github.GrenderG:Toasty:1.4.2'
+
+    //custom snake bar
+    implementation 'com.github.matecode:Snacky:1.1.5'
+    implementation 'com.google.android.material:material:1.0.0'
+
+    //Custom Notification
+    implementation 'com.tapadoo.android:alerter:3.0.0'
+
+    //custom tooltip
+    implementation 'com.fenchtose:tooltip:0.1.6'
+
+    //Google libs
+    implementation "com.google.android.gms:play-services-location:17.0.0"
+    //ripple animation for map
+    implementation 'com.github.aarsy.googlemapsanimations:googlemapsanimations:1.0.5'
+    //ripple animation
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+    //Animation road drawing library
+    implementation 'com.github.amalChandran:trail-android:v1.51'
+
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+}

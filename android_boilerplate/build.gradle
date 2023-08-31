@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
+
 android {
     namespace 'com.fidenz.android_boilerplate'
     compileSdk 33
@@ -21,10 +22,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
+
+    task androidSourcesJar(type: Jar) {
+        classifier 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+        project.afterEvaluate {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    from components.release
+                    artifact androidSourcesJar // optional sources
+                }
+            }
+        }
+    }
+
 }
 
 dependencies {
